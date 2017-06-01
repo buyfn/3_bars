@@ -51,16 +51,20 @@ def distance_between_points(latitude1, longitude1, latitude2, longitude2):
 
 
 def get_user_coordinates():
-    latitude = input('Введи широту, на которой сейчас сидишь: ')
-    longitude = input('Введи долготу, на которой сейчас сидишь: ')
-    return latitude, longitude
+    while True:
+        latitude = input('Введи широту, на которой сейчас сидишь: ')
+        longitude = input('Введи долготу, на которой сейчас сидишь: ')
+        try:
+            return float(latitude), float(longitude)
+        except ValueError:
+            print('\nНепонятные координаты. Введи еще раз, только цифрами.')
 
 
 if __name__ == '__main__':
     bars = load_data('data.json')
 
     latitude, longitude = get_user_coordinates()
-    closestBar = get_closest_bar(bars, float(longitude), float(latitude))
+    closestBar = get_closest_bar(bars, longitude, latitude)
     biggestBar = get_biggest_bar(bars)
     smallestBar = get_smallest_bar(bars)
 
