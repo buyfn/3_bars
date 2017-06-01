@@ -45,8 +45,8 @@ def get_closest_bar(data, longitude, latitude):
 
 
 def distance_between_points(latitude1, longitude1, latitude2, longitude2):
-    distY = latitude2 - latitude1
-    distX = longitude2 - longitude1
+    distY = abs(latitude2 - latitude1)
+    distX = abs(longitude2 - longitude1)
     return math.sqrt((distX**2 + distY**2))
 
 
