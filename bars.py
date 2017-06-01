@@ -44,7 +44,7 @@ def distance_between_points(latitude1, longitude1, latitude2, longitude2):
 
 def get_user_coordinates():
     latitude = input('Введи широту, на которой сейчас сидишь: ')
-    longitude = input('Введи высоту, на которой сейчас сидишь: ')
+    longitude = input('Введи долготу, на которой сейчас сидишь: ')
     return latitude, longitude
 
 
