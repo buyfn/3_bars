@@ -7,7 +7,7 @@ from functools import reduce
 def load_data(filepath):
     if not os.path.exists(filepath):
         return None
-    with open(filepath, 'r') as file_handler:
+    with open(filepath, 'r', encoding='cp1251') as file_handler:
         return json.load(file_handler)
 
 
