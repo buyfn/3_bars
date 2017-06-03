@@ -45,9 +45,9 @@ def get_closest_bar(data, longitude, latitude):
 
 
 def distance_between_points(latitude1, longitude1, latitude2, longitude2):
-    distY = abs(latitude2 - latitude1)
-    distX = abs(longitude2 - longitude1)
-    return math.sqrt((distX**2 + distY**2))
+    dist_y = abs(latitude2 - latitude1)
+    dist_x = abs(longitude2 - longitude1)
+    return math.sqrt((dist_x**2 + dist_y**2))
 
 
 def get_user_coordinates():
@@ -64,15 +64,15 @@ if __name__ == '__main__':
     bars = load_data('data.json')
 
     latitude, longitude = get_user_coordinates()
-    closestBar = get_closest_bar(bars, longitude, latitude)
-    biggestBar = get_biggest_bar(bars)
-    smallestBar = get_smallest_bar(bars)
+    closest_bar = get_closest_bar(bars, longitude, latitude)
+    biggest_bar = get_biggest_bar(bars)
+    smallest_bar = get_smallest_bar(bars)
 
     print('\nБлижайший бар')
-    print_bar(closestBar)
+    print_bar(closest_bar)
 
     print('\nСамый большой бар')
-    print_bar(biggestBar)
+    print_bar(biggest_bar)
 
     print('\nСамый маленький бар')
-    print_bar(smallestBar)
+    print_bar(smallest_bar)
