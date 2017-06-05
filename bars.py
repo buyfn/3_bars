@@ -30,7 +30,6 @@ def print_bar(bar):
     print('Адрес: ' + bar['Address'])
 
 
-
 def get_closest_bar(data, longitude, latitude):
     def closer_bar(bar1, bar2):
         dist1 = distance_between_points(latitude,
