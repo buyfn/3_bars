@@ -12,7 +12,7 @@
 
 ```#!bash
 
-$ python bars.py data_file.json# possibly requires call of python3 executive instead of just python
+$ python bars.py data_file.json # possibly requires call of python3 executive instead of just python
 Введи широту, на которой сейчас сидишь: 55.63
 Введи долготу, на которой сейчас сидишь: 37.74
 
