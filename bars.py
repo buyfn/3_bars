@@ -12,12 +12,6 @@ def load_data(filepath):
         return json.load(file_handler)
 
 
-def print_bar(bar):
-    print('Название: ' + bar['Name'])
-    print('Количество мест: ' + str(bar['SeatsCount']))
-    print('Адрес: ' + bar['Address'])
-
-
 def get_bar_size(bar):
     return bar['SeatsCount']
 
@@ -28,6 +22,13 @@ def get_biggest_bar(data):
 
 def get_smallest_bar(data):
     return min(data, key=get_bar_size)
+
+
+def print_bar(bar):
+    print('Название: ' + bar['Name'])
+    print('Количество мест: ' + str(get_bar_size(bar)))
+    print('Адрес: ' + bar['Address'])
+
 
 
 def get_closest_bar(data, longitude, latitude):
