@@ -2,6 +2,7 @@ import json
 import sys
 import os
 import math
+import operator
 from functools import reduce
 
 
@@ -12,21 +13,17 @@ def load_data(filepath):
         return json.load(file_handler)
 
 
-def get_bar_size(bar):
-    return bar['SeatsCount']
-
-
 def get_biggest_bar(data):
-    return max(data, key=get_bar_size)
+    return max(data, key=operator.itemgetter('SeatsCount'))
 
 
 def get_smallest_bar(data):
-    return min(data, key=get_bar_size)
+    return min(data, key=operator.itemgetter('SeatsCount'))
 
 
 def print_bar(bar):
     print('Название: ' + bar['Name'])
-    print('Количество мест: ' + str(get_bar_size(bar)))
+    print('Количество мест: ' + str(bar['SeatsCount']))
     print('Адрес: ' + bar['Address'])
 
 
