@@ -6,13 +6,13 @@
 
 Скрипт требует для своей работы установленного интерпретатора Python версии 3.5
 
-Перед запуском нужно скачать файл с [данными о барах](https://data.mos.ru/opendata/7710881420-bary) в формате json с портала открытых данных, назвать его `data.json` и положить в одну директорию с `bars.py`.
+Перед запуском нужно скачать файл с [данными о барах](https://data.mos.ru/opendata/7710881420-bary) в формате json с портала открытых данных, и передать его как аргумент при запуске скрипта.
 
 Запуск на Linux:
 
 ```#!bash
 
-$ python bars.py # possibly requires call of python3 executive instead of just python
+$ python bars.py data_file.json# possibly requires call of python3 executive instead of just python
 Введи широту, на которой сейчас сидишь: 55.63
 Введи долготу, на которой сейчас сидишь: 37.74
 

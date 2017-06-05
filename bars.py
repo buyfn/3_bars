@@ -1,4 +1,5 @@
 import json
+import sys
 import os
 import math
 from functools import reduce
@@ -17,16 +18,16 @@ def print_bar(bar):
     print('Адрес: ' + bar['Address'])
 
 
+def get_bar_size(bar):
+    return bar['SeatsCount']
+
+
 def get_biggest_bar(data):
-    return reduce(lambda bar1, bar2:
-                  bar1 if (bar1['SeatsCount'] > bar2['SeatsCount']) else bar2,
-                  data)
+    return max(data, key=get_bar_size)
 
 
 def get_smallest_bar(data):
-    return reduce(lambda bar1, bar2:
-                  bar1 if (bar1['SeatsCount'] < bar2['SeatsCount']) else bar2,
-                  data)
+    return min(data, key=get_bar_size)
 
 
 def get_closest_bar(data, longitude, latitude):
@@ -61,7 +62,13 @@ def get_user_coordinates():
 
 
 if __name__ == '__main__':
-    bars = load_data('data.json')
+    current_directory = os.getcwd()
+    try:
+        path = os.path.join(current_directory, sys.argv[1])
+    except IndexError:
+        sys.exit('Нужно указать файл с данными о барах')
+
+    bars = load_data(path)
 
     latitude, longitude = get_user_coordinates()
     closest_bar = get_closest_bar(bars, longitude, latitude)
