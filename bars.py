@@ -3,7 +3,6 @@ import sys
 import os
 import math
 import operator
-from functools import reduce
 
 
 def load_data(filepath):
@@ -11,6 +10,12 @@ def load_data(filepath):
         return None
     with open(filepath, 'r', encoding='cp1251') as file_handler:
         return json.load(file_handler)
+
+
+def print_bar(bar):
+    print('Название: ' + bar['Name'])
+    print('Количество мест: ' + str(bar['SeatsCount']))
+    print('Адрес: ' + bar['Address'])
 
 
 def get_biggest_bar(data):
@@ -21,25 +26,14 @@ def get_smallest_bar(data):
     return min(data, key=operator.itemgetter('SeatsCount'))
 
 
-def print_bar(bar):
-    print('Название: ' + bar['Name'])
-    print('Количество мест: ' + str(bar['SeatsCount']))
-    print('Адрес: ' + bar['Address'])
-
-
 def get_closest_bar(data, longitude, latitude):
-    def closer_bar(bar1, bar2):
-        dist1 = distance_between_points(latitude,
-                                        longitude,
-                                        float(bar1['Latitude_WGS84']),
-                                        float(bar1['Longitude_WGS84']))
-        dist2 = distance_between_points(latitude,
-                                        longitude,
-                                        float(bar2['Latitude_WGS84']),
-                                        float(bar2['Longitude_WGS84']))
-        return bar2 if dist2 < dist1 else bar1
+    def distance_to_bar(bar):
+        return distance_between_points(latitude,
+                                       longitude,
+                                       float(bar['Latitude_WGS84']),
+                                       float(bar['Longitude_WGS84']))
 
-    return reduce(closer_bar, data)
+    return min(data, key=distance_to_bar)
 
 
 def distance_between_points(latitude1, longitude1, latitude2, longitude2):
